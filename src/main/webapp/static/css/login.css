@@ -1,0 +1,51 @@
+body{
+	background: #f5f5f5;
+}
+#id_login{
+	margin-top: 60px;
+}
+#id_login>.row>.data-login{
+	padding:0;
+	border: 1px #C4C2C2 solid;
+	height: 430px;
+	background: #fff;
+}
+#myTab{
+	border: 0;
+}
+#myTab>li>.data-login{
+	border: 0px;
+	padding: 20px 0 20px 0;
+	border-radius: 0;
+	text-align: center;
+	background: #EAE5E5;
+	font-size: 16px;
+	margin: 0;
+}
+#myTab>li{
+	padding:0;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	border: none;
+}
+#myTab>li>.data-login:hover{
+	background:#BCB9B9;
+}
+#login{
+	padding: 20px 80px 20px 80px;
+}
+#register{
+	padding: 10px 80px 10px 80px;
+}
+.form-group>label{
+	font-size: 16px;
+	font-weight:normal;
+}
+#login>form>div.checkbox{
+	margin-bottom:20px;
+	margin-top:20px;
+}
+#login>form>div.form-group>p.other-login>a{
+	padding-left:25px;
+}
+

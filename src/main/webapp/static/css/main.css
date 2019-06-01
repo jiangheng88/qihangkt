@@ -1,0 +1,49 @@
+/* d导航栏的样式 */
+#id_nav>.navbar-header{
+	background: url(../img/logo.png) no-repeat;
+	
+	background-size: 35px 35px;
+	background-position: 0 14px;
+	padding-left: 40px;
+	font-size: 30px;
+	font-weight: bolder;
+
+}
+
+#id_nav>.input-group{
+	width:190px;
+}
+#id_nav>.navbar-nav>li{
+	width:100px;
+	text-align: center;
+	align-content: 70px;
+	font-size: 16px;
+	padding:;
+}
+
+/* 脚步的样式 */
+.footer{
+	height:150px;
+	background:#E7E3E3;
+	margin-top: 30px;
+	padding: 20px 0 20px 0;
+}
+.footer>.cr{
+	text-align: center;
+
+
+
+}
+.footer>.cr>a{
+	color: #333;
+}
+
+.footericon{
+	text-align: center;
+}
+.footericon>span{
+	
+	text-align: center;
+	
+	font-size: 40px;
+}
