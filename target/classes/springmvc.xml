@@ -16,17 +16,26 @@
 		<context:include-filter type="annotation"
 			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
-
 	<!-- 要为我们springmvc的默认的视图解析器配置前后缀 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-
 	<mvc:annotation-driven /> <!-- 综合的注解，帮助注入到ioc容器的多种bean -->
-
 	<!-- 对静态资源的处理的注解 -->
-	<mvc:default-servlet-handler/>
+	<mvc:default-servlet-handler />
 
+	<mvc:interceptors>
+	 
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**" />
+			<bean class="cn.bzu.qihangkt.web.AuthIncepertor"></bean>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/login" />
+			<bean class="cn.bzu.qihangkt.web.Autointercpeter"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

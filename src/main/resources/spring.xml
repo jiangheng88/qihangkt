@@ -22,7 +22,6 @@
 			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
-
 	<!-- 配置c3p0的连接池 -->
 	<context:property-placeholder
 		location="classpath:jdbc.properties" />
@@ -84,7 +83,4 @@
 
 	<mybatis-spring:scan
 		base-package="cn.bzu.qihangkt.dao" />
-
-
-
 </beans>

@@ -14,25 +14,25 @@ import cn.bzu.qihangkt.tools.MapToEntityTool;
 
 @Service("baseService")
 public abstract class BaseServiceImpl<T> implements BaseService<T> {
-	// 定义一个接收泛型的变量
+	
 	private Class<T> clazz;
-	// 定义一个表名
+	
 	private String tableName = null;
 
-	// 获得泛型的具体的类型
+
 	public BaseServiceImpl() {
-		// 获得父类的类型
+		
 		Type type = this.getClass().getGenericSuperclass();
-		// 将Type类型的强转为他的实现类
+		
 		ParameterizedType pt = (ParameterizedType) type;
-		// 得到的数组的第一个元素就是我们要得到的类的类型
+		
 		Type arr[] = pt.getActualTypeArguments();
 		clazz = (Class<T>) arr[0];
-		// 获取表名
+		
 		tableName = clazz.getSimpleName().toLowerCase();
 	}
 
-	// 提供一个抽象方法 当前类的子类需要提供具体实现类的 Dao
+	
 	public abstract BaseDao<T> getBaseDao();
 
 	@Override
@@ -57,9 +57,9 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	public int add(T t) {
 
 		List<Object> list = new ArrayList<>();
-		// 将参数放入数组中
+		
 		for (Field field : t.getClass().getDeclaredFields()) {
-			field.setAccessible(true);// 权限
+			field.setAccessible(true);// 权锟斤拷
 			try {
 				list.add(field.get(t));
 			} catch (IllegalArgumentException | IllegalAccessException e) {
@@ -75,7 +75,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 
 		List<Object> list = new ArrayList<>();
 		for (Field field : t.getClass().getDeclaredFields()) {
-			field.setAccessible(true);// 权限
+			field.setAccessible(true);// 权锟斤拷
 			try {
 				if (field.get(t) == null) {
 					continue;
@@ -84,7 +84,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 					id = (Integer) field.get(t);
 					continue;
 				}
-				// 拼接成 ：变量名='值' 的形式
+				// 拼锟接筹拷 锟斤拷锟斤拷锟斤拷锟斤拷='值' 锟斤拷锟斤拷式
 				list.add(field.getName() + "=" + "'" + field.get(t) + "'");
 			} catch (IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
@@ -100,5 +100,12 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 		int count = getBaseDao().delete(tableName, id);
 		return count;
 	}
+	
+	@Override
+	public int addUserByColumn(Object[] columnName, Object[] fliedName) {
+		int count = getBaseDao().addUserByColumn(tableName, columnName, fliedName);
+		return count;
+	}
+	
 
 }

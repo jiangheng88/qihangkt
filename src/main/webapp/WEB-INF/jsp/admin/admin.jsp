@@ -12,9 +12,13 @@
 <title>起航课堂首页</title>
 
 <!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/font/iconfont.css">
-<link href="${pageContext.request.contextPath}/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/static/css/admin.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/font/iconfont.css">
+<link
+	href="${pageContext.request.contextPath}/static/lib/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/static/css/admin.css"
+	rel="stylesheet">
 <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
 <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
 <!--[if lt IE 9]>
@@ -22,8 +26,10 @@
       <script src="${pageContext.request.contextPath}/static/lib/respond/Respond.min.js"></script>
       <![endif]-->
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/index.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/css/index.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/css/main.css">
 </head>
 <body>
 	<div id="admin_top" class="container-fluid">
@@ -35,7 +41,7 @@
 				</div>
 				<div class="col-md-8 col-md-offset-8 login_info text-right">
 					<i class="iconfont">&#xe601;</i> admin <i class="iconfont">&#xe71a;</i>
-					2018-12-13 <a class="pull-right" href="#"><i class="iconfont ">&#xe615;</i></a>
+					2018-12-13 <a class="pull-right" href="${pageContext.request.contextPath}/admin/logout"><i class="iconfont ">&#xe615;</i></a>
 				</div>
 			</div>
 		</div>
@@ -51,13 +57,13 @@
 				class="iconfont">&#xe61c;</i>系统设置</a>
 			<ul id="collapse_system" class="collapse collapse_all">
 				<li><a href=""
-					data-iframesrc="${pageContext.request.contextPath}/admin/userManager.html?pageNum=1&pageSize=10"><i
+					data-iframesrc="${pageContext.request.contextPath}/admin/user?pageNum=1&pageSize=6"><i
 						class="iconfont">&#xe605;</i>用户管理</a></li>
 				<li><a href=""
-					data-iframesrc="${pageContext.request.contextPath}/admin/roleManager.html"><i
+					data-iframesrc="${pageContext.request.contextPath}/admin/roles"><i
 						class="iconfont">&#xe605;</i>角色管理</a></li>
 				<li><a href=""
-					data-iframesrc="${pageContext.request.contextPath}/admin/resManager.html"><i
+					data-iframesrc="${pageContext.request.contextPath}/admin/resources"><i
 						class="iconfont">&#xe605;</i>资源管理</a></li>
 				<li><a href=""><i class="iconfont ">&#xe605;</i>系统信息管理</a></li>
 				<li><a href=""><i class="iconfont ">&#xe605;</i>系统备份管理</a></li>
@@ -102,9 +108,15 @@
 		</ol>
 	</div>
 	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-	<script src="${pageContext.request.contextPath}/static/lib/jquery/jquery-1.12.4.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/static/lib/jquery/jquery.min.js"></script>
 	<!--  加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-	<script src="${pageContext.request.contextPath}/static/lib/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/admin.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/static/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/static/js/admin.js"></script>
 </body>
 </html>
+<iframe id="iframe-contant" class="navbar-fixed-bottom" frameborder="no"
+	scrolling="auto" width="100%" height="100%" allowtransparency="true"
+	src="${pageContext.request.contextPath}/static/html/admin_welcome.html"></iframe>

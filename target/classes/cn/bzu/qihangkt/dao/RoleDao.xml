@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bzu.qihangkt.dao.RoleDao">
+
+	<!-- 根据id查询，使用关联查询 -->
+	<select id="getOneRoleById" resultType="cn.bzu.qihangkt.entity.Role">
+	select
+	r.id,r.role_name,r.role_code from
+	role R,user_role_table urt where
+	r.id =
+	urt.role_id and urt.user_id =#{id}
+	</select>
+</mapper>

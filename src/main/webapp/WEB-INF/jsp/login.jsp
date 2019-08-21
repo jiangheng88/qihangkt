@@ -81,18 +81,18 @@
 				</ul>
 				<div id="myTabContent" class="tab-content">
 					<div class="tab-pane fade in active" id="login">
-						<form role="form">
+						<form role="form" action="${pageContext.request.contextPath}/dologin" method="POST">
 							<div class="form-group">
-								<label for="name">账号:</label> <input type="text"
+								<label for="name">账号:</label> <input name = "userInfo" type="text"
 									class="form-control" placeholder="请输入账号或者手机号">
 							</div>
 							<div class="form-group">
-								<label for="name">密码:</label> <input type="password"
+								<label for="name">密码:</label> <input name = "userpass" type="password"
 									class="form-control" placeholder="请输入密码">
 							</div>
 							<div class="checkbox">
-								<label> <input type="checkbox">记住密码
-								</label> <label> <input type="checkbox">自动登录
+								<label> <input type="checkbox" name="remmber" value="rem">记住密码
+								</label> <label> <input type="checkbox" name="autoLogin" value="auto">自动登录
 								</label>
 							</div>
 							<div class="form-group login-button">
@@ -164,7 +164,7 @@
 			</p>
 		</div>
 		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-		<script src="${pageContext.request.contextPath}/static/lib/jquery/jquery-1.12.4.min.js"></script>
+		<script src="${pageContext.request.contextPath}/static/lib/jquery/jquery.min.js"></script>
 		<!--  加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 		<script src="${pageContext.request.contextPath}/static/lib/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/index.js"></script>

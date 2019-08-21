@@ -2,8 +2,129 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="cn.bzu.qihangkt.dao.UserDao">
-  
-  
-  </mapper>
+
+<mapper namespace="cn.bzu.qihangkt.dao.UserDao">
+
+	<!-- 根据名字查询 -->
+	<select id="getUserByName"
+		resultType="cn.bzu.qihangkt.entity.User">
+		select * from user where username = #{username}
+	</select>
+
+	<!-- 查詢用户的信息 -->
+	<select id="selectAllUsersByRelevance" resultMap="user_role_map">
+		select
+		u.id,u.username,u.userpass,u.email,u.phone,u.enable from user u
+	</select>
+	<!-- map的关联 ,查询所有的用户的信息 -->
+	<resultMap type="cn.bzu.qihangkt.entity.User"
+		id="user_role_map">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="userpass" column="userpass" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="enable" column="enable" />
+		<collection property="role"
+			select="cn.bzu.qihangkt.dao.RoleDao.getOneRoleById" column="id">
+		</collection>
+	</resultMap>
+	<!--根据id查询一条记录的信息，关联查询 -->
+
+	<select id="selectOneById" resultMap="UserRoleMapById">
+		select
+		u.id,u.username,u.userpass,u.email,u.phone,u.enable from user
+		u where
+		u.id= #{id}
+	</select>
+
+	<resultMap type="cn.bzu.qihangkt.entity.User"
+		id="UserRoleMapById">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="userpass" column="userpass" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="enable" column="enable" />
+		<collection property="role"
+			select="cn.bzu.qihangkt.dao.RoleDao.getOneRoleById" column="id">
+		</collection>
+
+	</resultMap>
+	
+	<!-- 登录 -->
+	
+	<select id="login" resultType="cn.bzu.qihangkt.entity.User">
+		select username,phone,email,userpass from user where username=#{userInfo} or phone=#{userInfo} or email = #{userInfo} and userpass=#{userpass}
+	</select>
+
+
+	<!-- 模糊查询 -->
+
+	<select id="fuzzySelectByInfo" resultMap="fuzzySelectUserRole">
+		select
+		u.id,u.username,u.userpass,u.email,u.phone,u.enable,u.date from user
+		u where
+		u.username like concat('%',#{info},'%') or
+		u.phone like
+		concat('%',#{info},'%')
+	</select>
+
+	<resultMap type="cn.bzu.qihangkt.entity.User"
+		id="fuzzySelectUserRole">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="userpass" column="userpass" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="enable" column="enable" />
+		<collection property="role"
+			select="cn.bzu.qihangkt.dao.RoleDao.getOneRoleById" column="id">
+		</collection>
+
+	</resultMap>
+
+
+	<!-- //批量删除 -->
+	<delete id="batchDeleteUser">
+		delete from user where id =
+		<foreach collection="ids" item="obj" open="(" close=")"
+			separator=",">
+			#{obj}
+		</foreach>
+	</delete>
+	
+	 <select id="getUserAllInfo"  resultMap="UserRelRoleRelResMap">
+  		select u.id,u.username,u.userpass,u.email,u.phone,u.enable,
+  				r.id rid,r.role_name,r.role_code,
+  				res.id resid,res.path
+  		from 
+  			user u,role r,resource res,user_role_table ur,role_resource_table rr
+  		where 
+  			u.id=ur.user_id and ur.role_id=r.id and r.id=rr.role_id and rr.resource_id=res.id
+  		and
+  			(u.username=#{userInfo} or u.phone=#{userInfo} or u.email=#{userInfo}) 
+  	</select> 
+	
+	<resultMap type="cn.bzu.qihangkt.entity.User" id="UserRelRoleRelResMap">
+  		<id column="id" property="id"/>
+  		<result column="username" property="username"/>
+  		<result column="userpass" property="userpass"/>
+  		<result column="email" property="email"/>
+  		<result column="phone" property="phone"/>
+  		<result column="enable" property="enable"/>
+  		<collection property="role" ofType="cn.bzu.qihangkt.entity.Role">
+  			<id column="rid" property="id"/>
+  			<result column="role_name" property="roleName"/>
+  			<result column="role_code" property="roleCode"/>
+  			<collection property="resources" ofType="cn.bzu.qihangkt.entity.Resource">
+  				<id column="resid" property="id"/>
+  				<result column="path" property="path"/>
+  			</collection>
+  		</collection>
+  	</resultMap>
+	 
+	
+  	
+
+</mapper>

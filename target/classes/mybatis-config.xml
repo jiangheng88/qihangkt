@@ -5,18 +5,9 @@
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
-
-		<!-- 配置懒加载 -->
-
-		<setting name="lazyLoadingEnabled" value="true"></setting>
-		<setting name="aggressiveLazyLoading" value="false"></setting>
-
-		<!-- 开启二级缓存 -->
-
-		<setting name="cacheEnabled" value="true" />
-		<!-- 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。  -->
-		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	
-	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
+
 </configuration>

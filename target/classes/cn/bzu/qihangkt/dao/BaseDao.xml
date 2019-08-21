@@ -14,6 +14,8 @@
 	<select id="selectAll" resultType="map">
 		select * from ${tableName}
 	</select>
+	
+	
 
 	<!-- 添加一条记录 -->
 
@@ -23,6 +25,22 @@
 			separator=",">
 			#{obj}
 		</foreach>
+	</insert>
+	
+	<!-- 根据列名插入元素 -->
+	
+	<insert id="addUserByColumn" >
+		insert into ${tableName} 
+		<foreach collection="columnName" item="obj" open="(" close=")"
+			separator=",">
+			${obj}
+		</foreach>
+		values
+		<foreach collection="fliedName" item="obj" open="(" close=")"
+			separator=",">
+			#{obj}
+		</foreach>
+		
 	</insert>
 
 	<!-- 修改一条记录 -->

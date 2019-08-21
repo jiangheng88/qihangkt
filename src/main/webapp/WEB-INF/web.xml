@@ -3,10 +3,6 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-
-	<!-- spring的基本配置 -->
-
-
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring.xml</param-value>
@@ -16,14 +12,6 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-
-	
-
-
-	<!--springmvc的核心配置 -->
-	<!-- The front controller of this Spring Web application, responsible for 
-		handling all application requests -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -34,9 +22,16 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>InitWebServlet</servlet-name>
+		<servlet-class>cn.bzu.qihangkt.web.InitWebServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
 
 </web-app>

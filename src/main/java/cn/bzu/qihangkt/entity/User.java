@@ -1,12 +1,34 @@
 package cn.bzu.qihangkt.entity;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.junit.runners.Parameterized.Parameter;
+import org.springframework.stereotype.Component;
+
+import net.sf.ehcache.search.expression.Not;
+@Component
 public class User {
+	
 	private Integer id;
+	@NotEmpty(message = "用户名不能为空")
 	private String username;
+	
+	@Size(min =6,max = 10)
 	private String userpass;
+	@Email(message = "email格式不正确")
 	private String email;
+	@NotEmpty(message = "手机号不能为空")
 	private String phone;
 	private Integer enable;
+	
+	private Date date;
+	private List<Role> role;
 	public Integer getId() {
 		return id;
 	}
@@ -43,24 +65,32 @@ public class User {
 	public void setEnable(Integer enable) {
 		this.enable = enable;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", userpass=" + userpass + ", email=" + email + ", phone="
-				+ phone + ", enable=" + enable + "]";
+	
+	public Date getDate() {
+		return date;
 	}
-	public User(Integer id, String username, String userpass, String email, String phone, int enable) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.userpass = userpass;
-		this.email = email;
-		this.phone = phone;
-		this.enable = enable;
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
+	
+	public List<Role> getRole() {
+		return role;
+	}
+	public void setRole(List<Role> role) {
+		this.role = role;
 	}
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", userpass=" + userpass + ", email=" + email + ", phone="
+				+ phone + ", enable=" + enable + ", date=" + date + ", role=" + role + "]";
+	}
+	
 	
 	
 }
